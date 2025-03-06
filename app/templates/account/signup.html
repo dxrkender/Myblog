@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <!-- Section: Design Block -->
+  <section class="text-center text-lg-start">
+    <style>
+        .cascading-right {
+            margin-right: -50px;
+        }
+
+        @media (max-width: 991.98px) {
+            .cascading-right {
+                margin-right: 0;
+            }
+        }
+    </style>
+
+    <!-- Jumbotron -->
+    <div class="container py-4">
+      <div class="row g-0 align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <div class="card cascading-right bg-body-tertiary" style="backdrop-filter: blur(30px);">
+            <div class="card-body p-5 shadow-5 text-center">
+              <h2 class="fw-bold mb-5">Sign up now</h2>
+              <form method="post" action="{% url 'account:signup' %}">
+                {% csrf_token %}
+                {% if form.non_field_errors %}
+                  {% for error in form.non_field_errors %}
+                    <div class="alert alert-danger" role="alert">
+                      {{ error }}
+                    </div>
+                  {% endfor %}
+                {% endif %}
+                <!-- 2 column grid layout with text inputs for the first and last names -->
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+
+
+                    <div data-mdb-input-init class="form-floating">
+                      {{ form.first_name }}
+                      <label class="form-label" for="form3Example1">First name</label>
+                      {% if form.first_name.errors %}
+                        {% for error in form.first_name.errors %}
+                          <div class="alert alert-danger mt-2" role="alert">
+                            {{ error }}
+                          </div>
+                        {% endfor %}
+                      {% endif %}
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div data-mdb-input-init class="form-floating">
+                      {{ form.last_name }}
+                      <label class="form-label" for="form3Example2">Last name</label>
+                      {% if form.last_name.errors %}
+                        {% for error in form.last_name.errors %}
+                          <div class="alert alert-danger mt-2" role="alert">
+                            {{ error }}
+                          </div>
+                        {% endfor %}
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+                <!-- Username input -->
+                <div data-mdb-input-init class="form-floating mb-4">
+                  {{ form.username }}
+                  <label class="form-label" for="form3Example3">Username</label>
+                  {% if form.username.errors %}
+                    {% for error in form.username.errors %}
+                      <div class="alert alert-danger mt-2" role="alert">
+                        {{ error }}
+                      </div>
+                    {% endfor %}
+                  {% endif %}
+                </div>
+                <!-- Email input -->
+                <div data-mdb-input-init class="form-floating mb-4">
+                  {{ form.email }}
+                  <label class="form-label" for="form3Example3">Email</label>
+                  {% if form.email.errors %}
+                    {% for error in form.email.errors %}
+                      <div class="alert alert-danger mt-2" role="alert">
+                        {{ error }}
+                      </div>
+                    {% endfor %}
+                  {% endif %}
+                </div>
+                <!-- Password input -->
+                <div data-mdb-input-init class="form-floating mb-4">
+                  {{ form.password1 }}
+                  <label class="form-label" for="form3Example4">Password</label>
+                  {% if form.password1.errors %}
+                    {% for error in form.password1.errors %}
+                      <div class="alert alert-danger mt-2" role="alert">
+                        {{ error }}
+                      </div>
+                    {% endfor %}
+                  {% endif %}
+                </div>
+                <!-- Repeat Password input -->
+                <div data-mdb-input-init class="form-floating mb-4">
+                  {{ form.password2 }}
+                  <label class="form-label" for="form3Example4">Repeat Password</label>
+                  {% if form.password2.errors %}
+                    {% for error in form.password2.errors %}
+                      <div class="alert alert-danger mt-2" role="alert">
+                        {{ error }}
+                      </div>
+                    {% endfor %}
+                  {% endif %}
+                </div>
+                <!-- Checkbox -->
+                <div class="form-check d-flex justify-content-center mb-4">
+                  {{ form.subscribe }}
+                  <label class="form-check-label" for="form2Example33">
+                    Subscribe to our newsletter
+                  </label>
+                  {% if form.subscribe.errors %}
+                    {% for error in form.non_field_errors %}
+                      <div class="alert alert-danger mt-2" role="alert">
+                        {{ error }}
+                      </div>
+                    {% endfor %}
+                  {% endif %}
+                </div>
+                <!-- Submit button -->
+                <button type="submit" data-mdb-button-init data-mdb-ripple-init
+                        class="btn btn-primary btn-dark w-100 mb-4">
+                  Sign up
+                </button>
+                <!-- Register buttons -->
+                <div class="text-center">
+                  <p>or sign up with:</p>
+                  <button type="button" data-mdb-button-init data-mdb-ripple-init
+                          class="btn btn-link btn-floating mx-1">
+                    <i class="fab fa-google fa-2x"></i>
+                  </button>
+                  <button type="button" data-mdb-button-init data-mdb-ripple-init
+                          class="btn btn-link btn-floating mx-1">
+                    <i class="fab fa-github fa-2x"></i>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 mb-5 mb-lg-0">
+
+          <img src="https://mdbootstrap.com/img/new/ecommerce/vertical/004.jpg" class="w-60 rounded-4 shadow-4"
+               alt=""/>
+        </div>
+      </div>
+    </div>
+    <!-- Jumbotron -->
+  </section>
+  <!-- Section: Design Block -->
+{% endblock %}
+
